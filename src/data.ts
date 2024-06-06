@@ -1,1 +1,0 @@
-export const formStages: number[] = [1 , 2 , 3, 4 ]
