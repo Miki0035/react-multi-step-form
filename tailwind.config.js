@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'nav-mobile-img': "url('./src/assets/images/bg-sidebar-mobile.svg')",
-        'nav-desktop-img': "url('./src/assets/images/bg-sidebar-desktop.svg')",
+        'nav-mobile-img': "url('/src/assets/images/bg-sidebar-mobile.svg')",
+        'nav-desktop-img': "url('/src/assets/images/bg-sidebar-desktop.svg')",
 
       },
       colors: {
