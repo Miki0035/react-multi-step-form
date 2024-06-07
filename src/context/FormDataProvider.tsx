@@ -3,7 +3,7 @@ import { FormDataContextProps } from "../types";
 import { FormData } from "../types";
 
 const FormDataContext = createContext<FormDataContextProps>({
-  stageNumber: 1,
+  stageNumber: 3,
   setStageNumber: () => {},
   formData: {
     name: "",
@@ -15,6 +15,7 @@ const FormDataContext = createContext<FormDataContextProps>({
       groupName: "",
       price: 0,
     },
+    addOns: []
   },
   setFormData: () => {},
 });
@@ -31,6 +32,7 @@ const FormDataProvider = ({ children }: { children: ReactNode }) => {
       groupName: "",
       price: 0,
     },
+    addOns: []
   });
 
   return (

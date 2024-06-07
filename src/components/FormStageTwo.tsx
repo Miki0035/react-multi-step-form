@@ -1,10 +1,10 @@
-import { FormEvent, useContext, useState } from "react";
+import { FormEvent, useContext, useState, useEffect } from "react";
 import { FormDataContext } from "../context/FormDataProvider";
 import { monthlyPlans, yearlyPlans } from "../constants/data";
 import { Plan } from "../types";
 
 const FormStageTwo = () => {
-  const { setFormData, setStageNumber } = useContext(FormDataContext);
+  const { setFormData, setStageNumber, formData } = useContext(FormDataContext);
   const [isMonthlyPlan, setIsMonthlyPlan] = useState(true);
   const [isMonthly, setIsMonthly] = useState(true);
   const [selectedPlan, setSelectedPlan] = useState({
@@ -14,17 +14,21 @@ const FormStageTwo = () => {
     price: 9,
   });
 
-  const handlePlanSelect = (plan: Plan) => {
-    setSelectedPlan(plan);
+  const handlePlanSelect = ({ id, groupName, name, price }: Plan) => {
+    setSelectedPlan({ ...selectedPlan, id, groupName, name, price });
   };
 
   const handleForm = (event: FormEvent) => {
     event.preventDefault();
     setFormData((prevFormData) => ({
       ...prevFormData,
-      plan: selectedPlan,
+      plan: {...selectedPlan},
     }));
+    setStageNumber((prevStage) => prevStage + 1)
   };
+
+  useEffect(() => {
+  },[formData])
 
   return (
     <form
@@ -61,13 +65,7 @@ const FormStageTwo = () => {
                       name={plan.groupName}
                       id={plan.id}
                       value={plan.id}
-                      onChange={() =>
-                        setSelectedPlan({
-                          ...selectedPlan,
-                          id: plan.id,
-                          groupName: plan.groupName,
-                        })
-                      }
+                      onChange={() => handlePlanSelect(plan)}
                       checked={selectedPlan.id === plan.id}
                       className="hidden"
                     />
@@ -93,7 +91,7 @@ const FormStageTwo = () => {
             : yearlyPlans.map((plan, index) => (
                 <div
                   key={index}
-                  onClick={() => setSelectedPlan(plan)}
+                  onClick={() => handlePlanSelect(plan)}
                   className={`my-4 flex flex-col border rounded-md py-3
                   ${
                     selectedPlan.id === plan.id
@@ -109,13 +107,7 @@ const FormStageTwo = () => {
                       id={plan.id}
                       value={plan.id}
                       className="hidden"
-                      onChange={() =>
-                        setSelectedPlan({
-                          ...selectedPlan,
-                          id: plan.id,
-                          groupName: plan.groupName,
-                        })
-                      }
+                      onChange={() => handlePlanSelect(plan)}
                     />
                     <div className="w-23 mx-3">
                       <img
@@ -182,16 +174,15 @@ const FormStageTwo = () => {
 
       <div className="absolute bottom-0 w-full bg-white h-24 py-5 flex justify-between mt-5">
         <button
-          type="submit"
-          onClick={() => setStageNumber((prevStage) => prevStage - 1)}
+          type="button"
           className="capitalize text-coolGray mx-3"
+          onClick={() => setStageNumber((prevStage) => prevStage - 1)}
         >
           go back
         </button>
         <button
           type="submit"
           className="bg-marineBlue text-lightBlue py-2 px-3 rounded-md self-end font-ubuntuMedium my-2 mx-2"
-          onClick={() => setStageNumber((prevStage) => prevStage + 1)}
         >
           Next Step
         </button>

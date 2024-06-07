@@ -1,6 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
 
-
 export type Plan = {
   id: string | "";
   name: string | "";
@@ -8,11 +7,19 @@ export type Plan = {
   price: number | 0;
 }
 
+export type AddOns = {
+  id: string;
+  name: string,
+  desc: string,
+  price: number,
+}
+
 export type FormData = {
   name: string;
   email: string;
   phone: string;
   plan: Plan;
+  addOns: AddOns[]
 }
 
 export type FormDataContextProps = {

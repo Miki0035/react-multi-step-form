@@ -51,3 +51,46 @@ export const yearlyPlans = [
     warrenty: "2 months free",
   },
 ];
+
+export const monthlyAddOns = [
+  {
+    id: "1",
+    name: "Online service",
+    desc: "Access to multiplayer games",
+    price: 1,
+  },
+  {
+    id: "2",
+    name: "Larger storage",
+    desc: "Extra 1TB of cloud save",
+    price: 2,
+  },
+  {
+    id: "3",
+    name: "Customizable profile",
+    desc: "Custom theme on your profile",
+    price: 2,
+  },
+];
+
+
+export const yearlyAddOns = [
+  {
+    id: "1",
+    name: "Online service",
+    desc: "Access to multiplayer games",
+    price: 10,
+  },
+  {
+    id: "2",
+    name: "Larger storage",
+    desc: "Extra 1TB of cloud save",
+    price: 20,
+  },
+  {
+    id: "3",
+    name: "Customizable profile",
+    desc: "Custom theme on your profile",
+    price: 20,
+  },
+];
