@@ -47,7 +47,7 @@ const Success = () => {
             . Coded by{" "}
             <a
               className="text-purplishBlue hover:underline font-ubuntuBold"
-              href="#"
+              href="https://www.linkedin.com/in/mikiyas-kebede-b661aa225/"
               target="_blank"
             >
               Mikiyas Kebede
