@@ -31,9 +31,9 @@ const FormStageThree = () => {
       onSubmit={handleForm}
       className="relative w-full h-full flex flex-col items-center"
     >
-      <div className="upper-part absolute -top-8 w-80 h-40vh bg-white px-4 py-5 rounded-md">
-        <div className="text-upper w-72 my-4">
-          <h1 className="text-marineBlue text-2xl font-ubuntuBold">
+      <div className="upper-part absolute -top-8 w-80 h-40vh bg-white px-4 py-5 rounded-md md:top-0 md:w-full md:h-full md:flex md:flex-col md:py-12 md:items-center md:px-12">
+        <div className="text-upper w-72 my-4  md:w-full">
+          <h1 className="text-marineBlue text-2xl font-ubuntuBold md:text-3xl">
             Pick add-ons
           </h1>
           <p className="flex flex-wrap text-coolGray text-md font-700 my-1">
@@ -49,7 +49,7 @@ const FormStageThree = () => {
                     selectedAddOn.includes(add)
                       ? "border-purplishBlue bg-magnolia"
                       : "border-lightGray"
-                  } py-3 `}
+                  } py-3 md:py-4 `}
                   onClick={() => {
                     handleAddonSelect(add);
                   }}
@@ -62,9 +62,7 @@ const FormStageThree = () => {
                           name={add.name}
                           id={add.id}
                           value={add.id}
-                          onChange={() =>
-                            handleAddonSelect(add)
-                          }
+                          onChange={() => handleAddonSelect(add)}
                           checked={selectedAddOn.includes(add)}
                           className="w-4 h-4"
                         />
@@ -110,10 +108,7 @@ const FormStageThree = () => {
                           name={add.name}
                           id={add.id}
                           value={add.id}
-                          onChange={() =>
-                            handleAddonSelect(add)
-                    
-                          }
+                          onChange={() => handleAddonSelect(add)}
                           checked={selectedAddOn.includes(add)}
                           className="w-4 h-4"
                         />
@@ -142,7 +137,7 @@ const FormStageThree = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-0 w-full bg-white h-24 py-5 flex justify-between mt-5">
+      <div className="absolute bottom-0 w-full bg-white h-24 py-5 flex justify-between mt-5 md:mt-0 md:px-10">
         <button
           type="submit"
           onClick={() => setStageNumber((prevStage) => prevStage - 1)}
@@ -152,7 +147,7 @@ const FormStageThree = () => {
         </button>
         <button
           type="submit"
-          className="bg-marineBlue text-lightBlue py-2 px-3 rounded-md self-end font-ubuntuMedium my-2 mx-2"
+          className="bg-marineBlue text-white py-2 px-3 rounded-md self-end font-ubuntuMedium my-2 mx-2"
         >
           Next Step
         </button>

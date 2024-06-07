@@ -1,4 +1,21 @@
-export const formStages: number[] = [1, 2, 3, 4];
+export const formStages = [
+  {
+    stageNumber: 1,
+    stageInfo: "Your info",
+  },
+  {
+    stageNumber: 2,
+    stageInfo: "select plan",
+  },
+  {
+    stageNumber: 3,
+    stageInfo: "add-ons",
+  },
+  {
+    stageNumber: 4,
+    stageInfo: "summary",
+  },
+];
 
 export const monthlyPlans = [
   {
@@ -72,7 +89,6 @@ export const monthlyAddOns = [
     price: 2,
   },
 ];
-
 
 export const yearlyAddOns = [
   {

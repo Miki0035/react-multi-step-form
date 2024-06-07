@@ -27,4 +27,6 @@ export type FormDataContextProps = {
   setStageNumber: Dispatch<SetStateAction<number>>;
   formData: FormData;
   setFormData: Dispatch<SetStateAction<FormData>>;
+  isFormComplete: boolean;
+  setIsFormComplete: Dispatch<SetStateAction<boolean>>;
 };

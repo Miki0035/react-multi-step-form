@@ -22,22 +22,21 @@ const FormStageTwo = () => {
     event.preventDefault();
     setFormData((prevFormData) => ({
       ...prevFormData,
-      plan: {...selectedPlan},
+      plan: { ...selectedPlan },
     }));
-    setStageNumber((prevStage) => prevStage + 1)
+    setStageNumber((prevStage) => prevStage + 1);
   };
 
-  useEffect(() => {
-  },[formData])
+  useEffect(() => {}, [formData]);
 
   return (
     <form
       onSubmit={handleForm}
       className="relative w-full h-full flex flex-col items-center"
     >
-      <div className="upper-part absolute -top-8 w-80 h-40vh bg-white px-4 py-5 rounded-md">
-        <div className="text-upper w-72 my-4">
-          <h1 className="text-marineBlue text-xl font-ubuntuBold">
+      <div className="upper-part absolute -top-8 w-80 h-40vh bg-white px-4 py-5 rounded-md md:top-0 md:w-full md:h-full md:flex md:flex-col md:py-12 md:items-center md:px-12 ">
+        <div className="text-upper w-72 my-4 md:w-full">
+          <h1 className="text-marineBlue text-xl font-ubuntuBold md:text-3xl">
             Select your plan
           </h1>
 
@@ -45,95 +44,101 @@ const FormStageTwo = () => {
             You have the option of monthly or yearly billing.
           </p>
         </div>
-        <div className="upper-form w-full">
-          {isMonthlyPlan
-            ? monthlyPlans.map((plan, index) => (
-                <div
-                  key={index}
-                  className={`my-4 flex flex-col border  rounded-md ${
-                    selectedPlan.id === plan.id
-                      ? "border-purplishBlue bg-magnolia"
-                      : "border-lightGray"
-                  } py-3`}
-                  onClick={() => {
-                    handlePlanSelect(plan);
-                  }}
-                >
-                  <div className="flex justify-start items-center cursor-pointer">
-                    <input
-                      type="radio"
-                      name={plan.groupName}
-                      id={plan.id}
-                      value={plan.id}
-                      onChange={() => handlePlanSelect(plan)}
-                      checked={selectedPlan.id === plan.id}
-                      className="hidden"
-                    />
-                    <div className="w-23 mx-3">
-                      <img
-                        src={plan.icon}
-                        alt={`${plan.name} icon`}
-                        className="w-full"
+        <div className="upper-form w-full ">
+          <div className="flex flex-col md:flex-row md:justify-evenly md:w-full">
+            {isMonthlyPlan
+              ? monthlyPlans.map((plan, index) => (
+                  <div
+                    key={index}
+                    className={`my-4 flex flex-col border  rounded-md ${
+                      selectedPlan.id === plan.id
+                        ? "border-purplishBlue bg-magnolia"
+                        : "border-lightGray"
+                    } py-3 xl:w-[12rem]`}
+                    onClick={() => {
+                      handlePlanSelect(plan);
+                    }}
+                  >
+                    <div className="flex justify-start items-center cursor-pointer md:flex-col md:h-40 md:justify-between md:items-start md:px-2 md:w-32">
+                      <input
+                        type="radio"
+                        name={plan.groupName}
+                        id={plan.id}
+                        value={plan.id}
+                        onChange={() => handlePlanSelect(plan)}
+                        checked={selectedPlan.id === plan.id}
+                        className="hidden"
                       />
-                    </div>
-                    <div className="flex flex-col">
-                      <label
-                        htmlFor="arcade"
-                        className="text-marineBlue font-ubuntuBold text-lg font-500"
-                      >
-                        {plan.name}
-                      </label>
-                      <p className="text-coolGray text-md">${plan.price}/mo</p>
+                      <div className="w-23 mx-3">
+                        <img
+                          src={plan.icon}
+                          alt={`${plan.name} icon`}
+                          className="w-full"
+                        />
+                      </div>
+                      <div className="flex flex-col">
+                        <label
+                          htmlFor="arcade"
+                          className="text-marineBlue font-ubuntuBold text-lg font-500"
+                        >
+                          {plan.name}
+                        </label>
+                        <p className="text-coolGray text-md">
+                          ${plan.price}/mo
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))
-            : yearlyPlans.map((plan, index) => (
-                <div
-                  key={index}
-                  onClick={() => handlePlanSelect(plan)}
-                  className={`my-4 flex flex-col border rounded-md py-3
+                ))
+              : yearlyPlans.map((plan, index) => (
+                  <div
+                    key={index}
+                    onClick={() => handlePlanSelect(plan)}
+                    className={`my-4 flex flex-col border rounded-md py-3
                   ${
                     selectedPlan.id === plan.id
                       ? "border-purplishBlue bg-magnolia"
                       : "border-lightGray"
                   }
-                  `}
-                >
-                  <div className="flex justify-start items-center cursor-pointer">
-                    <input
-                      type="radio"
-                      name={plan.groupName}
-                      id={plan.id}
-                      value={plan.id}
-                      className="hidden"
-                      onChange={() => handlePlanSelect(plan)}
-                    />
-                    <div className="w-23 mx-3">
-                      <img
-                        src={plan.icon}
-                        alt={`${plan.name} icon`}
-                        className="w-full"
+                  xl:w-[12rem]`}
+                  >
+                    <div className="flex justify-start items-center cursor-pointer md:flex-col md:h-40 md:justify-between md:items-start md:px-2 md:w-32">
+                      <input
+                        type="radio"
+                        name={plan.groupName}
+                        id={plan.id}
+                        value={plan.id}
+                        className="hidden"
+                        onChange={() => handlePlanSelect(plan)}
                       />
-                    </div>
-                    <div className="flex flex-col">
-                      <label
-                        htmlFor="arcade"
-                        className="text-marineBlue font-ubuntuBold text-lg"
-                      >
-                        {plan.name}
-                      </label>
-                      <p className="text-coolGray text-md">${plan.price}/yr</p>
-                      <p className="text-marineBlue font-ubuntuMedium text-sm ">
-                        {plan.warrenty}
-                      </p>
+                      <div className="w-23 mx-3">
+                        <img
+                          src={plan.icon}
+                          alt={`${plan.name} icon`}
+                          className="w-full"
+                        />
+                      </div>
+                      <div className="flex flex-col">
+                        <label
+                          htmlFor="arcade"
+                          className="text-marineBlue font-ubuntuBold text-lg"
+                        >
+                          {plan.name}
+                        </label>
+                        <p className="text-coolGray text-md">
+                          ${plan.price}/yr
+                        </p>
+                        <p className="text-marineBlue font-ubuntuMedium text-sm ">
+                          {plan.warrenty}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+          </div>
 
           <div className="flex justify-center items-center w-full my-2">
-            <div className="bg-magnolia items-center py-5 px-5 rounded-lg flex justify-evenly w-full">
+            <div className="bg-magnolia xl:w-2/3 items-center py-5 px-5 rounded-lg flex justify-evenly w-full">
               <span
                 className={`${
                   isMonthly
@@ -172,7 +177,7 @@ const FormStageTwo = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-0 w-full bg-white h-24 py-5 flex justify-between mt-5">
+      <div className="absolute bottom-0 w-full bg-white h-24 py-5 flex justify-between mt-5 md:mt-0 md:px-10">
         <button
           type="button"
           className="capitalize text-coolGray mx-3"
@@ -182,7 +187,7 @@ const FormStageTwo = () => {
         </button>
         <button
           type="submit"
-          className="bg-marineBlue text-lightBlue py-2 px-3 rounded-md self-end font-ubuntuMedium my-2 mx-2"
+          className="bg-marineBlue text-white py-2 px-3 rounded-md self-end font-ubuntuMedium my-2 mx-2"
         >
           Next Step
         </button>

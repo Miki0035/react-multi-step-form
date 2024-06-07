@@ -8,19 +8,19 @@ import {
   Success,
 } from "../components";
 const FormContainer = () => {
-  const { stageNumber } = useContext(FormDataContext);
+  const { stageNumber, isFormComplete } = useContext(FormDataContext);
   return (
-    <div className="relative w-full h-screen bg-magnolia rounded-md flex flex-col items-start">
-      {stageNumber === 1 ? (
+    <div className="relative w-full h-screen bg-magnolia rounded-md flex flex-col items-start md:h-[600px]">
+      {!isFormComplete && stageNumber === 1 ? (
         <FormStageOne />
-      ) : stageNumber === 2 ? (
+      ) : !isFormComplete && stageNumber === 2 ? (
         <FormStageTwo />
-      ) : stageNumber === 3 ? (
+      ) : !isFormComplete && stageNumber === 3 ? (
         <FormStageThree />
-      ) : stageNumber === 4 ? (
+      ) : !isFormComplete && stageNumber === 4 ? (
         <FormStageFour />
       ) : (
-        <Success />
+        isFormComplete && <Success />
       )}
     </div>
   );

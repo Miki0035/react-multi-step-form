@@ -5,18 +5,10 @@ import FormContainer from "./containers/FormContainer";
 const App = () => {
   return (
     <FormDataProvider>
-      <main className="relative bg-alabaster w-full h-full flex flex-col items-center">
+      <main className="relative bg-alabaster w-full h-full flex flex-col items-center md:flex-row md:w-[900px] md:rounded-xl md:my-5 md:h-[650px] xl:w-[1200px]">
         <FormNavbar />
         <FormContainer />
       </main>
-
-      {/* <div className="attribution">
-        Challenge by{" "}
-        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
-          Frontend Mentor
-        </a>
-        . Coded by <a href="#">Your Name Here</a>.
-      </div> */}
     </FormDataProvider>
   );
 };

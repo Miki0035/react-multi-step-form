@@ -2,12 +2,12 @@ import { FormEvent, useContext, useEffect } from "react";
 import { FormDataContext } from "../context/FormDataProvider";
 
 const FormStageFour = () => {
-  const { formData, setStageNumber } = useContext(FormDataContext);
+  const { formData, setStageNumber, setIsFormComplete } = useContext(FormDataContext);
   let sum = 0;
 
   const handleForm = (event: FormEvent) => {
     event.preventDefault();
-    setStageNumber((prevStage) => prevStage + 1)
+    setIsFormComplete(true)
   };
 
   const totalPrice = () => {
@@ -15,16 +15,15 @@ const FormStageFour = () => {
     return sum;
   };
 
-  useEffect(() => {
-  }, [formData]);
+  useEffect(() => {}, [formData]);
 
   return (
     <form
       onSubmit={handleForm}
       className="relative w-full h-full flex flex-col items-center"
     >
-      <div className="upper-part absolute -top-8 w-80 h-40vh bg-white px-4 py-5 rounded-md">
-        <div className="text-upper w-72 my-4">
+      <div className="upper-part absolute -top-8 w-80 h-40vh bg-white px-4 py-5 rounded-md md:top-0 md:w-full md:h-full md:flex md:flex-col md:py-12 md:items-center md:px-12">
+        <div className="text-upper w-72 my-4  md:w-full">
           <h1 className="text-marineBlue text-2xl font-ubuntuBold">
             Finishing up
           </h1>
@@ -39,7 +38,7 @@ const FormStageFour = () => {
                 <h2 className="capitalize text-marineBlue font-ubuntuBold">
                   {formData.plan.id} ({formData.plan.groupName})
                 </h2>
-                <h3 className="underline text-coolGray mb-3">Change</h3>
+                <h3 className="underline text-coolGray mb-3 hover:underline hover:text-purplishBlue cursor-pointer">Change</h3>
               </div>
               <div>
                 <p className="text-marineBlue font-ubuntuBold">
@@ -70,7 +69,7 @@ const FormStageFour = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-0 w-full bg-white h-24 py-5 flex justify-between mt-5">
+      <div className="absolute bottom-0 w-full bg-white h-24 py-5 flex justify-between mt-5 md:mt-0 md:px-10">
         <button
           type="submit"
           onClick={() => setStageNumber((prevStage) => prevStage - 1)}
@@ -80,7 +79,7 @@ const FormStageFour = () => {
         </button>
         <button
           type="submit"
-          className="bg-purplishBlue text-alabaster py-2 px-3 rounded-md self-end my-2 mx-2"
+          className="bg-purplishBlue text-alabaster py-2 px-3 rounded-md self-end my-2 mx-2 md:px-8 hover:bg-pastelBlue"
         >
           Confirm
         </button>

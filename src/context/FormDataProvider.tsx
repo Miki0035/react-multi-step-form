@@ -3,7 +3,7 @@ import { FormDataContextProps } from "../types";
 import { FormData } from "../types";
 
 const FormDataContext = createContext<FormDataContextProps>({
-  stageNumber: 3,
+  stageNumber: 0,
   setStageNumber: () => {},
   formData: {
     name: "",
@@ -15,13 +15,16 @@ const FormDataContext = createContext<FormDataContextProps>({
       groupName: "",
       price: 0,
     },
-    addOns: []
+    addOns: [],
   },
   setFormData: () => {},
+  isFormComplete: false,
+  setIsFormComplete: () => {}
 });
 
 const FormDataProvider = ({ children }: { children: ReactNode }) => {
-  const [stageNumber, setStageNumber] = useState(2);
+  const [stageNumber, setStageNumber] = useState(1);
+  const [isFormComplete, setIsFormComplete] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -32,7 +35,7 @@ const FormDataProvider = ({ children }: { children: ReactNode }) => {
       groupName: "",
       price: 0,
     },
-    addOns: []
+    addOns: [],
   });
 
   return (
@@ -42,6 +45,8 @@ const FormDataProvider = ({ children }: { children: ReactNode }) => {
         setStageNumber,
         formData,
         setFormData,
+        isFormComplete,
+        setIsFormComplete,
       }}
     >
       {children}

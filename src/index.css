@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: UbuntuBold;
-    src: url("./assets/fonts/Ubuntu-Bold.ttf");
+  font-family: UbuntuBold;
+  src: url("./assets/fonts/Ubuntu-Bold.ttf");
 }
 
 @font-face {
-    font-family: UbuntuMedium;
-    src: url("./assets/fonts/Ubuntu-Medium.ttf");
+  font-family: UbuntuMedium;
+  src: url("./assets/fonts/Ubuntu-Medium.ttf");
 }
 
 @font-face {
-    font-family: UbuntuRegular;
-    src: url("./assets/fonts/Ubuntu-Regular.ttf");
+  font-family: UbuntuRegular;
+  src: url("./assets/fonts/Ubuntu-Regular.ttf");
 }
